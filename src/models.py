@@ -33,13 +33,7 @@ class Character(Base):
     def to_dict(self):
         return {}
     
-class Favorite_Character(Base):
-    __tablename__ = 'favorite_character'
-    id = Column(Integer, primary_key=True)
-    character = Column(Integer, ForeignKey('character.id'))
 
-    def to_dict(self):
-        return {}
     
 class Planet(Base):
     __tablename__ = 'planet'
@@ -54,13 +48,6 @@ class Planet(Base):
     def to_dict(self):
         return {}
     
-class Favorite_Planet(Base):
-    __tablename__ = 'favorite_planet'
-    id = Column(Integer, primary_key=True)
-    planet = Column(Integer, ForeignKey('planet.id'))
-
-    def to_dict(self):
-        return {}
 
 class Vehicle(Base):
     __tablename__ = 'vehicle'
@@ -74,14 +61,7 @@ class Vehicle(Base):
     def to_dict(self):
         return {}
 
-class Favorite_Vehicle(Base):
-    __tablename__ = 'favorite_vehicle'
-    id = Column(Integer, primary_key=True)
-    vehicle = Column(Integer, ForeignKey('vehicle.id'))
 
-    def to_dict(self):
-        return {}
-    
 
 class Movies(Base):
     __tablename__ = 'movies'
@@ -95,13 +75,7 @@ class Movies(Base):
     def to_dict(self):
         return {}
 
-class Favorite_movie(Base):
-    __tablename__ = 'favorite_movie'
-    id = Column(Integer, primary_key=True)
-    movie = Column(Integer, ForeignKey('movies.id'))
 
-    def to_dict(self):
-        return {}
     
 class Director(Base):
     __tablename__ = 'director'
@@ -116,22 +90,16 @@ class Director(Base):
 
 
 
-
-
-
-
-
-
 class Favorites(Base):
     __tablename__ = 'favorites'
     # Here we define columns for the table address.
     # Notice that each column is also a normal Python instance attribute.
     id = Column(Integer, primary_key=True)
     user = Column(Integer, ForeignKey("user.id"))
-    fav_planet = Column(Integer, ForeignKey("favorite_planet.id"), nullable = True)
-    fav_character = Column(Integer, ForeignKey("favorite_character.id"), nullable = True)
-    fav_vehicle = Column(Integer, ForeignKey("favorite_vehicle.id"), nullable = True)
-    fav_movie = Column(Integer, ForeignKey("favorite_movie.id"), nullable = True)
+    planet = Column(Integer, ForeignKey("planet.id"),nullable = True)
+    character = Column(Integer, ForeignKey("character.id"),nullable = True)
+    vehicle = Column(Integer, ForeignKey("vehicle.id"),nullable = True)
+    movie = Column(Integer, ForeignKey("movies.id"),nullable = True)
     
     def to_dict(self):
         return {}
